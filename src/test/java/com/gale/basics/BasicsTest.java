@@ -132,7 +132,7 @@ public class BasicsTest {
 				return string.equals(item.getName());
 			}
 
-			@Override public void describeTo(Description arg0) {}
+			public void describeTo(Description arg0) {}
 		};
 	}
 
