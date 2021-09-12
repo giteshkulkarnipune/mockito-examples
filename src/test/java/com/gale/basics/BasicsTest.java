@@ -25,7 +25,7 @@ public class BasicsTest {
 		when(bar.getName()).thenReturn("foobar");
 
 		String result = bar.getName();
-
+		System.out.println("test");
 		assertThat(result, containsString("foo"));
 	}
 
