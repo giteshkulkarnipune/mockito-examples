@@ -9,12 +9,18 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.gale.domain.Bar;
 import com.gale.domain.Foo;
 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Bar.class)
 public class BasicsTest {
 
 	@Test
@@ -38,6 +44,13 @@ public class BasicsTest {
 		foo.getBarName();
 
 		verify(bar).getName();
+	}
+	
+	@Test
+	public void testprivate() throws Exception {
+		Bar classUnderTest = PowerMockito.spy(new Bar());
+        PowerMockito.when(classUnderTest, "testprivate", anyString(), anyInt()).thenReturn(20);
+        classUnderTest.testprivate();
 	}
 
 	@Test(expected = RuntimeException.class)
